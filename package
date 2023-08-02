@@ -1,0 +1,72 @@
+package com.net;
+ 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+ 
+/**
+ * 服务器
+ * @author 云村小威
+ *
+ * @2023年7月19日 下午10:02:11
+ */
+public class Server {
+ 
+	public static void main(String[] args) throws Exception {
+		System.out.println("⁎⁎⁎⁎⁎⁎服务端⁎⁎⁎⁎⁎⁎");
+ 
+		/* 创建服务器连接对象 */
+		ServerSocket ss = new ServerSocket(6666);
+		System.out.println("服务器已开启，等待连接...");
+ 
+		/* 调用accept方法，客服端没有启动连接不能执行下一步（阻塞功能） */
+		Socket server = ss.accept();
+		System.out.println("客户端连接成功");
+ 
+		/* 获取输入流，读取客户端发送的数据 */
+		InputStream inputStream = server.getInputStream();
+		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+ 
+		/* 获取输出流，向客户端回写数据 */
+		Scanner zw = new Scanner(System.in);
+ 
+		OutputStream outputStream = server.getOutputStream();
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(outputStream));
+ 
+		while (true) {
+			String readLine = br.readLine();
+			System.out.println("客户端 ：" + readLine);
+ 
+			if ("拜拜".equals(readLine)) {
+				System.out.println("再见");
+				break;
+			}
+ 
+			System.out.println("请输入发送到客户端的内容：");
+			String test = zw.next();
+			/* 向客户端写入内容 */
+			bw.write(test);
+			bw.newLine();
+			bw.flush();
+ 
+			if ("拜拜".equals(test)) {
+				System.out.println("再见");
+				break;
+			}
+		}
+ 
+		/* 关闭资源 */
+		bw.close();
+		outputStream.close();
+		br.close();
+		inputStream.close();
+		server.close();
+		ss.close();
+	}
+}
