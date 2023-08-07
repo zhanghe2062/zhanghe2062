@@ -1,0 +1,13 @@
+public void confirm(BillingInfo inBillingInfo) 
+      throws BillingException 
+  { 
+    if (CONFIRM_RESPONSE == EXCEPTION) 
+      throw new NullPointerException("Developer Null Pointer"); 
+ 
+    if (CONFIRM_RESPONSE == BILLING_EXCEPTION) 
+      throw new BillingException("Developer Billing Exception"); 
+  } 
+ 
+  /** 
+   * see BillingManager#reverse(BillingInfo) 
+   */ 
