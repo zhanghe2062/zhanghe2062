@@ -1,0 +1,18 @@
+ // instan 
+            try { 
+			externalUserMgr = new ExternalClientObject(hostname, port, 
+             clientLoginId, clientPassword); 
+            } catch (Exception expt) { 
+                // process the exception 
+         throw expt; 
+            } 
+        } 
+ 
+    public boolean searchUser(String userName) { 
+ 
+        boolean found = false; 
+		// Use the external User manager and search function for the given string 
+    // name 
+		// Typically the call will look like 
+ 		// found = externalUserMgr.searchUser(userName); 
+ 		// You may need to catch potential exception and display the appropriate 
