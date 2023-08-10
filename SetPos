@@ -1,0 +1,20 @@
+else
+			{
+				cout << "  ";
+			}
+		}
+		cout << endl;
+	}
+ 
+	SetPos(31, 2);
+	cout << "下 个图形" << endl;
+	SetPos(31, 17);
+	cout << "当 前得分" << endl;
+ 
+	for (int i = 0; i < 30; i++)
+	{
+		for (int j = 0; j < 16; j++)
+		{
+			if ((i == 0 || i == 29) || (j == 0 || j == 15))
+			{
+				map[i][j] = 1;
