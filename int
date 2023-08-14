@@ -1,0 +1,5 @@
+ ResultSet agg_cursor = stmt.executeQuery();
+            for( ; agg_cursor.next(); ) {
+                int inv_no = agg_cursor.getInt( 1 /* "inv_no" */ );
+                String total = agg_cursor.getString( 2 /* "total" */ );
+                Demo.display( Integer.toString( inv_no ) + ' ' + total )
