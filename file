@@ -1,0 +1,15 @@
+  finally 
+      { 
+        if (fileOutStream != null) 
+        { 
+          fileOutStream.flush(); 
+          fileOutStream.close(); 
+        } 
+      } 
+    } 
+ 
+    content.setStatus(ValidationContent.VALID); 
+ 
+    return content; 
+  } 
+ 
